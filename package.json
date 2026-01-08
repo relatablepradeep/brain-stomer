@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsx src/server.ts",
-    "start": "tsx src/server.ts"
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "@fastify/cors": "^8.5.0",
@@ -13,9 +14,8 @@
     "mongoose": "^9.1.2"
   },
   "devDependencies": {
+    "@types/node": "^25.0.3",
     "tsx": "^4.7.0",
     "typescript": "^5.4.0"
-  },
-  "author": "pradeep",
-  "license": "ISC"
+  }
 }

@@ -1,4 +1,4 @@
-import Recommendation from "../models/recommendation.ts";
+import Recommendation from "../models/recommendation";
 
 async function getMoviesFromAI(prompt: string): Promise<string[]> {
   const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {

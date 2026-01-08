@@ -10,7 +10,6 @@ yarn-error.log*
 .env
 
 # Build output
-dist/
 build/
 
 # OS files

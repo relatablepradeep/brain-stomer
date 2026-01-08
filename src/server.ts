@@ -6,18 +6,24 @@ import recommendRoutes from "./routes/recommend.js";
 
 const fastify = Fastify({
   logger: {
-    level: "info"
-  }
+    level: "info",
+  },
 });
 
-await fastify.register(cors, { origin: true });
+
+await fastify.register(cors, {
+  origin: ["https://suggestion-icdy.vercel.app"],
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+});
+
 
 await connectDB();
 
-// 🔥 IMPORTANT FIX
+
 await fastify.register(recommendRoutes, { prefix: "/api" });
 
-// Root routes (clean logs)
+
 fastify.get("/", async () => {
   return { status: "API is running 🚀" };
 });

@@ -5,14 +5,12 @@ import { connectDB } from "./db/mongo.js";
 import recommendRoutes from "./routes/recommend.js";
 
 const fastify = Fastify({
-  logger: {
-    level: "info",
-  },
+  logger: true,
 });
 
 
 await fastify.register(cors, {
-  origin: ["https://suggestion-icdy.vercel.app"],
+  origin: "*",
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 });
@@ -31,6 +29,7 @@ fastify.get("/", async () => {
 fastify.get("/health", async () => {
   return { status: "ok" };
 });
+
 
 await fastify.listen({ port: 4000, host: "0.0.0.0" });
 
